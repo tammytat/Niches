@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Niches & Hues Limited | Interior Design
+{% endblock %}
+
+{% block content %}
+
+<section style="
+    min-height: 82vh;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(41,34,29,0.90),
+            rgba(41,34,29,0.45),
+            rgba(41,34,29,0.20)
+        ),
+        url('{% static "images/better.jpg" %}')
+        center/cover;
+">
+
+    <div class="container">
+
+        <div style="
+            max-width: 720px;
+            color: white;
+            padding: 80px 0;
+        ">
+
+
+            <h1 style="
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(50px, 7vw, 88px);
+                line-height: 0.95;
+                margin-bottom: 25px;
+            ">
+                Transforming
+                Spaces.<br>
+                Inspiring Lives.
+            </h1>
+
+            <p style="
+                font-size: 17px;
+                max-width: 620px;
+                color: #eee6dc;
+                margin-bottom: 35px;
+            ">
+                Bringing clients' visions to life through innovative
+                design, exceptional craftsmanship and personalised
+                services.
+            </p>
+
+            <div style="
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            ">
+
+                <a href="{% url 'gallery' %}" class="btn btn-primary">
+                    Explore Our Work
+                </a>
+
+                <a href="{% url 'contact' %}" class="btn btn-outline">
+                    Start Your Project
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section style="
+    padding: 100px 0;
+    background: #faf7f2;
+">
+
+    <div class="container">
+
+        <div style="
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        ">
+
+            <p style="
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: #b77b45;
+                font-size: 11px;
+                font-weight: 700;
+                margin-bottom: 12px;
+            ">
+                Who We Are
+            </p>
+
+            <h2 style="
+                font-family: 'Cormorant Garamond', serif;
+                font-size: clamp(38px, 5vw, 60px);
+                margin-bottom: 20px;
+            ">
+                Designing spaces with purpose and personality.
+            </h2>
+
+            <p style="color: #665d55;">
+                Niches and Hues Limited is a dynamic and innovative
+                interior design company that evolved in 2023 from
+                its Octagon Interiors roots, a branch of Robayeks
+                Enterprises established in 2010.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section style="
+    padding: 90px 0;
+    background: #e9ddd0;
+">
+
+    <div class="container">
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        ">
+
+            <div style="
+                padding: 35px;
+                background: #faf7f2;
+            ">
+                <h3 style="
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                ">
+                    Residential
+                </h3>
+
+                <p style="color:#665d55;">
+                    Personalised homes that balance comfort,
+                    elegance and practicality.
+                </p>
+            </div>
+
+
+            <div style="
+                padding: 35px;
+                background: #faf7f2;
+            ">
+                <h3 style="
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                ">
+                    Commercial
+                </h3>
+
+                <p style="color:#665d55;">
+                    Functional and inspiring environments
+                    designed around your brand and people.
+                </p>
+            </div>
+
+
+            <div style="
+                padding: 35px;
+                background: #faf7f2;
+            ">
+                <h3 style="
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                ">
+                    Renovation
+                </h3>
+
+                <p style="color:#665d55;">
+                    Breathing new life into existing spaces
+                    through thoughtful redesign.
+                </p>
+            </div>
+
+
+            <div style="
+                padding: 35px;
+                background: #faf7f2;
+            ">
+                <h3 style="
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                ">
+                    Bespoke Furniture
+                </h3>
+
+                <p style="color:#665d55;">
+                    Custom furniture created to complement
+                    your taste and personality.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section style=" padding: 100px 0; background: #faf7f2; "> <div class="container"> <!-- Section Heading --> <div style=" display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; "> <div> <p style=" text-transform: uppercase; letter-spacing: 3px; color: #b77b45; font-size: 11px; font-weight: 700; margin-bottom: 12px; "> Featured Projects </p> <h2 style=" font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5vw, 60px); margin: 0; "> A glimpse into our work. </h2> </div> <a href="{% url 'gallery' %}" class="btn btn-outline"> View Full Gallery </a> </div> <!-- Gallery Grid --> <div style=" display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; "> {% for image in featured_images %} <a href="{% url 'gallery' %}" style=" display: block; position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: #e9ddd0; text-decoration: none; "> <img src="{{ image.image.url }}" alt="{{ image.title }}" style=" width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; " > <div style=" position: absolute; left: 0; right: 0; bottom: 0; padding: 25px; background: linear-gradient( transparent, rgba(41,34,29,0.85) ); color: white; "> <h3 style=" font-family: 'Cormorant Garamond', serif; font-size: 25px; margin: 0; "> {{ image.title }} </h3> {% if image.category %} <p style=" margin: 5px 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.85; "> {{ image.category }} </p> {% endif %} </div> </a> {% empty %} <div style=" grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #665d55; "> <p> Our featured projects will be displayed here. </p> </div> {% endfor %} </div> </div> </section>
+
+
+<section style="
+    padding: 100px 0;
+    text-align: center;
+">
+
+    <div class="container">
+
+        <p style="
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b77b45;
+            font-size: 11px;
+            font-weight: 700;
+        ">
+            Our Mission
+        </p>
+
+        <h2 style="
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(38px, 5vw, 58px);
+            max-width: 850px;
+            margin: 15px auto 25px;
+        ">
+            Bringing your vision to life.
+        </h2>
+
+        <p style="
+            max-width: 720px;
+            margin: auto;
+            color: #665d55;
+            font-size: 16px;
+        ">
+            We combine innovative design, exceptional craftsmanship
+            and personalised services to create interiors that are
+            both visually beautiful and truly functional.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

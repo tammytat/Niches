@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Gallery | Niches & Hues Limited
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================
+     GALLERY HERO
+========================================= -->
+
+<section class="gallery-page-hero">
+
+    <div class="gallery-page-hero-content">
+
+        <p class="eyebrow">
+            OUR PORTFOLIO
+        </p>
+
+        <h1>
+            Spaces we've<br>
+            <em>transformed.</em>
+        </h1>
+
+        <p>
+            Explore a selection of our residential, commercial,
+            renovation and bespoke interior design projects.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     GALLERY
+========================================= -->
+
+<section class="gallery-page-section">
+
+    <div class="container">
+
+        <!-- HEADING -->
+
+        <div class="gallery-page-heading">
+
+            <div>
+
+                <p class="eyebrow">
+                    NICHES & HUES
+                </p>
+
+                <h2>
+                    Featured <em>Work</em>
+                </h2>
+
+            </div>
+
+            <p>
+                A collection of spaces designed with intention,
+                personality and timeless elegance.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             CATEGORY FILTER
+        ====================================== -->
+
+        <div class="gallery-filters">
+
+            <a href="{% url 'gallery' %}"
+               class="{% if not request.GET.category %}active{% endif %}">
+                All Projects
+            </a>
+
+            <a href="?category=Residential"
+               class="{% if request.GET.category == 'Residential' %}active{% endif %}">
+                Residential
+            </a>
+
+            <a href="?category=Commercial"
+               class="{% if request.GET.category == 'Commercial' %}active{% endif %}">
+                Commercial
+            </a>
+
+            <a href="?category=Renovation"
+               class="{% if request.GET.category == 'Renovation' %}active{% endif %}">
+                Renovation
+            </a>
+
+            <a href="?category=Furniture"
+               class="{% if request.GET.category == 'Furniture' %}active{% endif %}">
+                Furniture
+            </a>
+
+        </div>
+
+
+        <!-- =====================================
+             GALLERY GRID
+        ====================================== -->
+
+        <div class="gallery-page-grid">
+
+            {% for image in images %}
+
+                <article class="gallery-page-item">
+
+                    <div class="gallery-page-image">
+
+                        <img
+                            src="{{ image.image.url }}"
+                            alt="{{ image.title }}"
+                        >
+
+                        <div class="gallery-overlay">
+
+                            <div>
+
+                                {% if image.category %}
+
+                                    <span>
+                                        {{ image.category }}
+                                    </span>
+
+                                {% endif %}
+
+                                <h3>
+                                    {{ image.title }}
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="gallery-page-empty">
+
+                    <p class="eyebrow">
+                        COMING SOON
+                    </p>
+
+                    <h2>
+                        Our projects are coming soon.
+                    </h2>
+
+                    <p>
+                        We're currently preparing our portfolio.
+                        Check back soon to explore our latest
+                        interior design projects.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     GALLERY CTA
+========================================= -->
+
+<section class="gallery-page-cta">
+
+    <div class="gallery-page-cta-content">
+
+        <p class="eyebrow">
+            HAVE A PROJECT IN MIND?
+        </p>
+
+        <h2>
+            Let's create a space
+            <em>you'll love.</em>
+        </h2>
+
+        <p>
+            Tell us about your project and let's explore
+            what's possible together.
+        </p>
+
+        <a href="{% url 'contact' %}"
+           class="btn btn-light">
+
+            Start Your Project
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
