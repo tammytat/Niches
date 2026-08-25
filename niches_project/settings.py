@@ -199,7 +199,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # ============================================================
@@ -222,6 +222,14 @@ STORAGES = {
 # ============================================================
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Production Email Configuration for marketing@nichesandhues.com.ng
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.nichesandhues.com.ng'  # Standard cPanel/Hostinger mail server format
+EMAIL_PORT = 465  # Use 465 for SSL (or 587 for TLS)
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'marketing@nichesandhues.com.ng'
+EMAIL_HOST_PASSWORD = 'YOUR_HOSTING_EMAIL_PASSWORD'  # Update this once created on your host
+DEFAULT_FROM_EMAIL = 'marketing@nichesandhues.com.ng'
 
 
 # ============================================================

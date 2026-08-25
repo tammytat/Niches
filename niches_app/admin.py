@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import GalleryImage
+from .models import GalleryImage, ContactMessage
+
 
 
 @admin.register(GalleryImage)
@@ -77,4 +78,44 @@ class GalleryImageAdmin(admin.ModelAdmin):
                 )
             },
         ),
+    )
+    
+    # =========================================
+# CONTACT MESSAGES
+# =========================================
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "name",
+        "email",
+        "phone",
+        "service",
+        "created_at",
+    )
+
+    list_filter = (
+        "service",
+        "created_at",
+    )
+
+    search_fields = (
+        "name",
+        "email",
+        "phone",
+        "message",
+    )
+
+    ordering = (
+        "-created_at",
+    )
+
+    readonly_fields = (
+        "name",
+        "email",
+        "phone",
+        "service",
+        "message",
+        "created_at",
     )
