@@ -108,36 +108,28 @@ WSGI_APPLICATION = "niches_project.wsgi.application"
 # DATABASE
 # ============================================================
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
+DB_HOST = os.environ.get("DB_HOST", "localhost")
 
-        "NAME": os.environ.get(
-            "DB_NAME",
-            "niches_db"
-        ),
-
-        "USER": os.environ.get(
-            "DB_USER",
-            "postgres"
-        ),
-
-        "PASSWORD": os.environ.get(
-            "DB_PASSWORD",
-            "password"
-        ),
-
-        "HOST": os.environ.get(
-            "DB_HOST",
-            "localhost"
-        ),
-
-        "PORT": os.environ.get(
-            "DB_PORT",
-            "5432"
-        ),
+if DB_HOST and DB_HOST != "localhost":
+    # Production PostgreSQL configuration
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("DB_NAME", "niches_db"),
+            "USER": os.environ.get("DB_USER", "postgres"),
+            "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
+            "HOST": DB_HOST,
+            "PORT": os.environ.get("DB_PORT", "5432"),
+        }
     }
-}
+else:
+    # Local fallback to SQLite
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # ============================================================
